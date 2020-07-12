@@ -1,26 +1,25 @@
 const { Readable } = require('stream');
-const chalk = require('chalk');
-
+const style = require('ansi-styles');
 const frames = (data) => {
     return [
         ``,
-        chalk.bgCyan(`  COVID Tracker in Console  `),
+        `${style.bgCyan.open}  COVID Updates in Console  ${style.bgCyan.close}`,
         ``,
-        `Country:       ${chalk.bold(data.Country)}`,
+        `Country:       ${style.bold.open}${data.Country}${style.bold.close}`,
         ``,
         `Date:          ${data.Date}`,
         ``,
-        `${chalk.blueBright('Confirmed')}:     ${chalk.bgBlue(' ' + data.Confirmed + ' ')}`,
+        `${style.blueBright.open}Confirmed${style.blueBright.close}:     ${style.bgBlue.open} ${data.Confirmed} ${style.bgBlue.close}`,
         ``,
-        `${chalk.yellow('Active')}:        ${chalk.bgYellow(' ' + data.Active + ' ')}`,
+        `${style.yellow.open}Active${style.yellow.close}:        ${style.bgYellow.open} ${data.Active} ${style.bgYellow.close}`,
         ``,
-        `${chalk.red('Deaths')}:        ${chalk.bgRed(' ' + data.Deaths + ' ')}`,
+        `${style.red.open}Deaths${style.red.close}:        ${style.bgRed.open} ${data.Deaths} ${style.bgRed.close}`,
         ``,
-        `${chalk.green('Recovered')}:     ${chalk.bgGreen(' ' + data.Recovered + ' ')}`,
+        `${style.green.open}Recovered${style.green.close}:     ${style.bgGreen.open} ${data.Recovered} ${style.bgGreen.close}`,
         ``,
-        `Github:        ${chalk.underline("https://github.com/Ayush-Rajniwal")}`,
+        `Github:        ${style.underline.open}https://github.com/Ayush-Rajniwal/covid.live/${style.underline.close}`,
         ``,
-        `${chalk.bgMagentaBright("  Crafted By:    Ayush Rajniwal  ")}`
+        `${style.bgMagentaBright.open} Crafted By:    Ayush Rajniwal${style.bgMagentaBright.close}`
     ]
 }
 
@@ -29,7 +28,7 @@ const renderError = async (req, res) => {
     const stream = new Readable();
     stream._read = () => { };
     stream.pipe(res);
-    stream.push(`${chalk.bgRedBright('No Country Found\n')}`);
+    stream.push(`${style.red.open}No Country Found!${style.red.close}\n`);
     stream.push(null)
 }
 
