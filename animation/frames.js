@@ -3,7 +3,7 @@ const style = require('ansi-styles');
 const frames = (data) => {
     return [
         ``,
-        `${style.bgCyan.open}  COVID Updates in Console  ${style.bgCyan.close}`,
+        `${style.bgCyan.open} Get COVID Update in your Terminal  ${style.bgCyan.close}`,
         ``,
         `Country:       ${style.bold.open}${data.Country}${style.bold.close}`,
         ``,

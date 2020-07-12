@@ -20,7 +20,7 @@ const getData = async (country) => {
 
 app.get('/', async (req, res, next) => {
 
-    //if user is not curl render html page
+    //if user is not using the curl then render the html page
     if (req.headers["user-agent"].search('curl') == -1)
         next();
     else
